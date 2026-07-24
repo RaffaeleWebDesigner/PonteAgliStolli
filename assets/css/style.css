@@ -59,42 +59,18 @@ img { max-width: 100%; display: block; }
   padding: 0 20px;
 }
 
-/* ---------- Badge / Logo placeholder ---------- */
-.badge-shield {
+/* ---------- Logo ufficiale ---------- */
+.brand-logo {
   width: 46px;
-  height: 54px;
-  position: relative;
-  background: var(--sky);
-  border: 2.5px solid var(--maroon);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 62%, 50% 100%, 0% 62%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: auto;
   flex-shrink: 0;
 }
-.badge-shield.lg { width: 110px; height: 130px; border-width: 4px; }
-.badge-shield::before,
-.badge-shield::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 14%;
-  background: var(--maroon);
+.hero-logo {
+  width: 130px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
 }
-.badge-shield.lg::before,
-.badge-shield.lg::after { height: 12%; }
-.badge-shield::before { top: 38%; }
-.badge-shield::after { top: 58%; }
-.badge-shield span {
-  position: relative;
-  z-index: 2;
-  font-family: 'Bebas Neue', sans-serif;
-  color: var(--maroon-dark);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-}
-.badge-shield.lg span { font-size: 1.7rem; }
 
 /* ---------- Header / Nav ---------- */
 .site-header {
@@ -199,15 +175,22 @@ img { max-width: 100%; display: block; }
 }
 .hero-badge { flex-shrink: 0; }
 
-.provisional-note {
-  display: inline-block;
-  margin-top: 14px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.35);
+.hero-tagline {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.25);
   color: var(--sky-light);
-  font-size: 0.78rem;
-  padding: 5px 12px;
-  border-radius: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+.hero-tagline strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 4px;
 }
 
 /* ---------- Sections ---------- */
