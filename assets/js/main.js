@@ -182,6 +182,7 @@ function iniziali(nome) {
 }
 
 function eta(nascita) {
+  if (!nascita) return null;
   const b = new Date(nascita);
   const diff = new Date() - b;
   return Math.floor(diff / (365.25 * 24 * 3600 * 1000));
@@ -202,7 +203,7 @@ function renderRosa(targetSelector, filtro) {
         <div class="name">${g.nome}</div>
         <div class="role">${g.ruolo}</div>
         <div class="stats">
-          <div><strong>${eta(g.nascita)}</strong>anni</div>
+          ${g.nascita ? `<div><strong>${eta(g.nascita)}</strong>anni</div>` : ""}
           <div><strong>${g.presenze}</strong>presenze</div>
           <div><strong>${g.gol}</strong>gol</div>
         </div>
