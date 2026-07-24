@@ -24,6 +24,8 @@
 
 html { scroll-behavior: smooth; }
 
+html, body { overflow-x: hidden; max-width: 100%; }
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -361,16 +363,17 @@ td.center, th.center { text-align: center; }
 .match-row .teams {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   font-weight: 700;
   flex: 1;
-  min-width: 220px;
+  min-width: 0;
+  word-break: break-word;
 }
 .match-row .teams .own { color: var(--maroon); }
 .match-row .meta {
   font-size: 0.82rem;
   color: var(--text-light);
-  white-space: nowrap;
 }
 .score {
   font-family: 'Bebas Neue', sans-serif;
@@ -613,4 +616,24 @@ td.center, th.center { text-align: center; }
 @media (max-width: 560px) {
   .quick-links { grid-template-columns: 1fr 1fr; }
   h1 { font-size: 2.1rem; }
+  .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }
+
+  .match-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .match-row .teams {
+    font-size: 0.95rem;
+  }
+  .match-row .meta {
+    width: 100%;
+  }
+  .score {
+    font-size: 1.15rem;
+    padding: 3px 10px;
+  }
+  .section-title {
+    flex-wrap: wrap;
+  }
 }
