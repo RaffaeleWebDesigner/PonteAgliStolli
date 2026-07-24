@@ -34,16 +34,23 @@ const SITE_DATA = {
 
   // ---------------- MARCATORI ----------------
   marcatori: [
-    { giocatore: "Luca Bianchi",    squadra: "Rondine Calcio",      gol: 19 },
-    { giocatore: "Andrea Rossi",    squadra: "Ponte agli Stolli",    gol: 15 },
-    { giocatore: "Marco Verdi",     squadra: "Subbiano",             gol: 14 },
-    { giocatore: "Simone Neri",     squadra: "Chiassa Veneri",       gol: 12 },
-    { giocatore: "Davide Conti",    squadra: "Ponte agli Stolli",    gol: 11 },
-    { giocatore: "Filippo Marchi",  squadra: "Bibbiena Calcio",      gol: 10 },
-    { giocatore: "Tommaso Ferri",   squadra: "Terranuova Traiana",   gol: 9  },
-    { giocatore: "Riccardo Lombardi", squadra: "Ponte agli Stolli",  gol: 8  },
-    { giocatore: "Gabriele Testi",  squadra: "Foiano",               gol: 7  },
-    { giocatore: "Matteo Sarti",    squadra: "Cavriglia",            gol: 6  },
+    { giocatore: "Samuele Tognetti",    squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Tommaso Marini",      squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Samuele Arvia",       squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Raffaele Ciccarelli", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Filippo Riminesi",    squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Niccolò Consolati",   squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Amin Nider",          squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Gabriele Taverna",    squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Raffaele Ciccarelli", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Mirko Borgogni",      squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Emanuele Imperatore", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Elia Gabbrielli",     squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Luca Bonchi",         squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Tommaso Morandini",   squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Anton Pjetri",        squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Roberto Chelaru",     squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Cristian Boci",       squadra: "Ponte agli Stolli", gol: 0 },
   ],
 
   // ---------------- CALENDARIO (partite da giocare) ----------------
