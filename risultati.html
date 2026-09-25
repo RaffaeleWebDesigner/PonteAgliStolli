@@ -37,7 +37,24 @@
   <section class="section">
     <div class="section-title"><h2>Risultati</h2></div>
     <p style="color:var(--text-light);margin-top:-8px;">Clicca su una partita per aprire le pagelle dei nostri giocatori.</p>
-    <div id="risultati-lista"></div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-campionato">Campionato</button>
+      <button class="tab-btn" data-tab="tab-coppa">Coppa</button>
+      <button class="tab-btn" data-tab="tab-amichevoli">Amichevoli</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-campionato">
+      <div id="risultati-campionato"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-coppa">
+      <div id="risultati-coppa"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-amichevoli">
+      <div id="risultati-amichevoli"></div>
+    </div>
   </section>
 </div>
 
@@ -69,6 +86,6 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
-<script>renderRisultati("#risultati-lista");</script>
+<script>renderRisultati();</script>
 </body>
 </html>

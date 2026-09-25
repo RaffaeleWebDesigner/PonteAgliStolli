@@ -60,10 +60,11 @@ const SITE_DATA = {
 
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
-    campionato: [
-      { giornata: 1, data: "2026-10-03", ora: "15:00", casa: "Ginestra", ospite: "Ponte agli Stolli", luogo: "Campo Pestello Verde, Montevarchi (AR)" },
-    ],
+    campionato: [],
     coppa: [],
+    amichevoli: [
+      { giornata: null, data: "2026-10-03", ora: "15:00", casa: "Ginestra", ospite: "Ponte agli Stolli", luogo: "Campo Pestello Verde, Montevarchi (AR)" },
+    ],
   },
 
   // ---------------- RISULTATI (partite giocate + pagelle) ----------------

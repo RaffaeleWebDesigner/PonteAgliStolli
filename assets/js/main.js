@@ -92,7 +92,7 @@ function renderCalendarioLista(matches, targetSelector) {
   });
   el.innerHTML = Object.keys(byGiornata).map(g => `
     <div class="giornata-group">
-      <div class="giornata-title">${typeof byGiornata[g][0].giornata === "number" ? "Giornata " + g : g}</div>
+      ${byGiornata[g][0].giornata == null ? "" : `<div class="giornata-title">${typeof byGiornata[g][0].giornata === "number" ? "Giornata " + g : g}</div>`}
       ${byGiornata[g].map(m => `
         <div class="match-row">
           <div class="teams">
@@ -107,10 +107,7 @@ function renderCalendarioLista(matches, targetSelector) {
   `).join("");
 }
 
-function initCalendarioTabs() {
-  renderCalendarioLista(SITE_DATA.calendario.campionato, "#lista-campionato");
-  renderCalendarioLista(SITE_DATA.calendario.coppa, "#lista-coppa");
-
+function initTabs() {
   const tabs = document.querySelectorAll(".tab-btn");
   tabs.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -122,6 +119,13 @@ function initCalendarioTabs() {
   });
 }
 
+function initCalendarioTabs() {
+  renderCalendarioLista(SITE_DATA.calendario.campionato, "#lista-campionato");
+  renderCalendarioLista(SITE_DATA.calendario.coppa, "#lista-coppa");
+  renderCalendarioLista(SITE_DATA.calendario.amichevoli, "#lista-amichevoli");
+  initTabs();
+}
+
 /* ---------------- RISULTATI + PAGELLE ---------------- */
 function votoClass(voto) {
   if (voto >= 7) return "high";
@@ -129,51 +133,64 @@ function votoClass(voto) {
   return "";
 }
 
-function renderRisultati(targetSelector) {
-  const el = document.querySelector(targetSelector);
-  if (!el) return;
-  const results = [...SITE_DATA.risultati].sort((a, b) => new Date(b.data) - new Date(a.data));
-  el.innerHTML = results.map(r => {
-    const isCasaOwn = isOwnTeam(r.casa);
-    const esito = esitoSquadra(r.golCasa, r.golOspite, isCasaOwn);
-    return `
-    <div class="result-block">
-      <div class="match-row result-row" data-target="pagelle-${r.id}">
-        <div class="teams">
-          <span class="${isCasaOwn ? "own" : ""}">${r.casa}</span>
-          <span class="score">${r.golCasa} - ${r.golOspite}</span>
-          <span class="${!isCasaOwn ? "own" : ""}">${r.ospite}</span>
-        </div>
-        <div class="meta">
-          <span class="badge-pill ${esito}">${esitoLabel(esito)}</span>
-          &nbsp; ${r.competizione}${r.giornata ? " · " + (typeof r.giornata === "number" ? "G" + r.giornata : r.giornata) : ""} · ${formatData(r.data)}
-          &nbsp; <span class="chevron">&#9656; pagelle</span>
-        </div>
+function renderRisultatoBlock(r) {
+  const isCasaOwn = isOwnTeam(r.casa);
+  const esito = esitoSquadra(r.golCasa, r.golOspite, isCasaOwn);
+  const giornata = r.giornata ? " · " + (typeof r.giornata === "number" ? "G" + r.giornata : r.giornata) : "";
+  return `
+  <div class="result-block">
+    <div class="match-row result-row" data-target="pagelle-${r.id}">
+      <div class="teams">
+        <span class="${isCasaOwn ? "own" : ""}">${r.casa}</span>
+        <span class="score">${r.golCasa} - ${r.golOspite}</span>
+        <span class="${!isCasaOwn ? "own" : ""}">${r.ospite}</span>
       </div>
-      <div class="pagelle-panel" id="pagelle-${r.id}">
-        <h4>Pagelle giocatori — ${r.casa} ${r.golCasa}-${r.golOspite} ${r.ospite}</h4>
-        <div class="pagelle-list">
-          ${r.pagelle.length ? "" : '<div class="empty-note">Pagelle non ancora disponibili.</div>'}
-          ${r.pagelle.map(p => `
-            <div class="pagella-item">
-              <div class="voto ${votoClass(p.voto)}">${p.voto}</div>
-              <div class="info">
-                <strong>${p.giocatore} <span style="font-weight:400;color:var(--text-light);">(${p.ruolo})</span></strong>
-                <span>${p.nota}</span>
-              </div>
+      <div class="meta">
+        <span class="badge-pill ${esito}">${esitoLabel(esito)}</span>
+        &nbsp; ${formatData(r.data)}${giornata}
+        &nbsp; <span class="chevron">&#9656; pagelle</span>
+      </div>
+    </div>
+    <div class="pagelle-panel" id="pagelle-${r.id}">
+      <h4>Pagelle giocatori — ${r.casa} ${r.golCasa}-${r.golOspite} ${r.ospite}</h4>
+      <div class="pagelle-list">
+        ${r.pagelle.length ? "" : '<div class="empty-note">Pagelle non ancora disponibili.</div>'}
+        ${r.pagelle.map(p => `
+          <div class="pagella-item">
+            <div class="voto ${votoClass(p.voto)}">${p.voto}</div>
+            <div class="info">
+              <strong>${p.giocatore} <span style="font-weight:400;color:var(--text-light);">(${p.ruolo})</span></strong>
+              <span>${p.nota}</span>
             </div>
-          `).join("")}
-        </div>
+          </div>
+        `).join("")}
       </div>
-    </div>`;
-  }).join("");
+    </div>
+  </div>`;
+}
 
-  el.querySelectorAll(".result-row").forEach(row => {
-    row.addEventListener("click", () => {
-      row.classList.toggle("open");
-      document.getElementById(row.dataset.target).classList.toggle("open");
+function renderRisultati() {
+  const sezioni = [
+    { selector: "#risultati-campionato", chiave: "Campionato" },
+    { selector: "#risultati-coppa", chiave: "Coppa" },
+    { selector: "#risultati-amichevoli", chiave: "Amichevole" },
+  ];
+  const results = [...SITE_DATA.risultati].sort((a, b) => new Date(b.data) - new Date(a.data));
+  sezioni.forEach(s => {
+    const el = document.querySelector(s.selector);
+    if (!el) return;
+    const items = results.filter(r => r.competizione === s.chiave);
+    el.innerHTML = items.length
+      ? items.map(renderRisultatoBlock).join("")
+      : '<div class="empty-note">Nessun risultato al momento.</div>';
+    el.querySelectorAll(".result-row").forEach(row => {
+      row.addEventListener("click", () => {
+        row.classList.toggle("open");
+        document.getElementById(row.dataset.target).classList.toggle("open");
+      });
     });
   });
+  initTabs();
 }
 
 /* ---------------- ROSA ---------------- */
@@ -266,7 +283,7 @@ function renderSponsor(targetSelector) {
 function renderHomeWidgets() {
   const prossima = document.querySelector("#widget-prossima");
   if (prossima) {
-    const tutte = [...SITE_DATA.calendario.campionato, ...SITE_DATA.calendario.coppa]
+    const tutte = [...SITE_DATA.calendario.campionato, ...SITE_DATA.calendario.coppa, ...SITE_DATA.calendario.amichevoli]
       .filter(m => isOwnTeam(m.casa) || isOwnTeam(m.ospite))
       .sort((a, b) => new Date(a.data) - new Date(b.data));
     const next = tutte[0];
