@@ -175,6 +175,25 @@ img { max-width: 100%; display: block; }
 }
 .hero-badge { flex-shrink: 0; }
 
+.league-pill {
+  display: inline-block;
+  margin: 2px 0 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: var(--white);
+}
+.league-pill.dark {
+  margin: 0;
+  background: var(--sky-light);
+  border-color: var(--sky);
+  color: var(--maroon-dark);
+}
+
 .hero-tagline {
   margin-top: 16px;
   padding-top: 16px;
@@ -265,6 +284,7 @@ table {
   font-size: 0.92rem;
   min-width: 560px;
 }
+#widget-marcatori, #marcatori-table { min-width: 0; }
 thead th {
   background: var(--maroon);
   color: var(--white);

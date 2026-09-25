@@ -71,7 +71,6 @@ function renderMarcatori(targetSelector, limit) {
     <tr class="${isOwnTeam(m.squadra) ? "own-team" : ""}">
       <td class="center"><span class="pos-badge">${i + 1}</span></td>
       <td>${m.giocatore}</td>
-      <td>${m.squadra}</td>
       <td class="center"><strong>${m.gol}</strong></td>
     </tr>
   `).join("");
@@ -147,13 +146,14 @@ function renderRisultati(targetSelector) {
         </div>
         <div class="meta">
           <span class="badge-pill ${esito}">${esitoLabel(esito)}</span>
-          &nbsp; ${r.competizione} · ${typeof r.giornata === "number" ? "G" + r.giornata : r.giornata} · ${formatData(r.data)}
+          &nbsp; ${r.competizione}${r.giornata ? " · " + (typeof r.giornata === "number" ? "G" + r.giornata : r.giornata) : ""} · ${formatData(r.data)}
           &nbsp; <span class="chevron">&#9656; pagelle</span>
         </div>
       </div>
       <div class="pagelle-panel" id="pagelle-${r.id}">
         <h4>Pagelle giocatori — ${r.casa} ${r.golCasa}-${r.golOspite} ${r.ospite}</h4>
         <div class="pagelle-list">
+          ${r.pagelle.length ? "" : '<div class="empty-note">Pagelle non ancora disponibili.</div>'}
           ${r.pagelle.map(p => `
             <div class="pagella-item">
               <div class="voto ${votoClass(p.voto)}">${p.voto}</div>
@@ -194,12 +194,12 @@ function renderRosa(targetSelector, filtro) {
   const list = filtro && filtro !== "Tutti"
     ? SITE_DATA.giocatori.filter(g => g.ruolo === filtro)
     : SITE_DATA.giocatori;
-  const ordered = [...list].sort((a, b) => a.numero - b.numero);
+  const ordered = [...list].sort((a, b) => (a.numero ?? 999) - (b.numero ?? 999));
   el.innerHTML = ordered.map(g => `
     <div class="player-card">
       <div class="player-photo">${iniziali(g.nome)}</div>
       <div class="body">
-        <div class="number">#${g.numero}</div>
+        ${g.numero != null ? `<div class="number">#${g.numero}</div>` : ""}
         <div class="name">${g.nome}</div>
         <div class="role">${g.ruolo}</div>
         <div class="stats">
@@ -302,4 +302,11 @@ function renderHomeWidgets() {
   renderMarcatori("#widget-marcatori tbody", 5);
 }
 
-document.addEventListener("DOMContentLoaded", initNav);
+function renderLeagueInfo() {
+  const c = SITE_DATA.campionato;
+  if (!c) return;
+  const text = `${c.nome} · ${c.categoria} · ${c.girone} · ${c.stagione}`;
+  document.querySelectorAll("[data-league]").forEach(el => { el.textContent = text; });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initNav(); renderLeagueInfo(); });

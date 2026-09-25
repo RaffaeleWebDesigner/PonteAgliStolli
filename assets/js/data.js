@@ -12,25 +12,28 @@ const TEAM_NAME = "Ponte agli Stolli";
 
 const SITE_DATA = {
 
+  // ---------------- CAMPIONATO ----------------
+  campionato: { nome: "Campionato UISP", categoria: "Categoria 2", girone: "Girone C", stagione: "2026/2027" },
+
   // ---------------- CLASSIFICA ----------------
   classifica: [
-    { pos: 1,  squadra: "Rondine Calcio",        pg: 24, v: 17, n: 5, p: 2,  gf: 52, gs: 18 },
-    { pos: 2,  squadra: "Subbiano",               pg: 24, v: 16, n: 4, p: 4,  gf: 47, gs: 22 },
-    { pos: 3,  squadra: "Ponte agli Stolli",       pg: 24, v: 14, n: 6, p: 4,  gf: 44, gs: 24 },
-    { pos: 4,  squadra: "Chiassa Veneri",          pg: 24, v: 13, n: 5, p: 6,  gf: 40, gs: 27 },
-    { pos: 5,  squadra: "Bibbiena Calcio",         pg: 24, v: 11, n: 7, p: 6,  gf: 36, gs: 29 },
-    { pos: 6,  squadra: "Terranuova Traiana",      pg: 24, v: 10, n: 6, p: 8,  gf: 33, gs: 30 },
-    { pos: 7,  squadra: "San Giovanni Valdarno",   pg: 24, v: 9,  n: 8, p: 7,  gf: 31, gs: 29 },
-    { pos: 8,  squadra: "Cavriglia",               pg: 24, v: 9,  n: 6, p: 9,  gf: 30, gs: 33 },
-    { pos: 9,  squadra: "Foiano",                  pg: 24, v: 8,  n: 7, p: 9,  gf: 28, gs: 32 },
-    { pos: 10, squadra: "Montevarchi Auxilium",    pg: 24, v: 7,  n: 8, p: 9,  gf: 27, gs: 31 },
-    { pos: 11, squadra: "Poppi",                   pg: 24, v: 7,  n: 6, p: 11, gf: 25, gs: 36 },
-    { pos: 12, squadra: "Castiglion Fibocchi",     pg: 24, v: 6,  n: 6, p: 12, gf: 22, gs: 38 },
-    { pos: 13, squadra: "Laterina",                pg: 24, v: 5,  n: 6, p: 13, gf: 20, gs: 40 },
-    { pos: 14, squadra: "Ambra Vallesanta",        pg: 24, v: 3,  n: 4, p: 17, gf: 16, gs: 47 },
+    { pos: 1, squadra: "AS Giglio", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 2, squadra: "ASD Gaiole", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 3, squadra: "Baco Donnini", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 4, squadra: "Ginestra", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 5, squadra: "Levane Leona", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 6, squadra: "Levanella '86", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 7, squadra: "Malva", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 8, squadra: "Montanino", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 9, squadra: "Pietrapiana Giglio Verde", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 10, squadra: "Pol. Il Ponte", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 11, squadra: "Ponte agli Stolli", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 12, squadra: "San Cipriano", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 13, squadra: "Sereto GS", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 14, squadra: "ASD Vaccherreccia", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
   ],
-  promozionePos: 2,   // fino a questa posizione (inclusa): zona promozione/playoff
-  retrocessionePos: 13, // da questa posizione (inclusa): zona retrocessione
+  promozionePos: 0,     // fino a questa posizione (inclusa): zona promozione/playoff (0 = nessuna)
+  retrocessionePos: 99, // da questa posizione (inclusa): zona retrocessione (99 = nessuna)
 
   // ---------------- MARCATORI ----------------
   marcatori: [
@@ -47,76 +50,34 @@ const SITE_DATA = {
     { giocatore: "Emanuele Imperatore", squadra: "Ponte agli Stolli", gol: 0 },
     { giocatore: "Elia Gabbrielli",     squadra: "Ponte agli Stolli", gol: 0 },
     { giocatore: "Luca Bonchi",         squadra: "Ponte agli Stolli", gol: 0 },
-    { giocatore: "Tommaso Morandini",   squadra: "Ponte agli Stolli", gol: 0 },
     { giocatore: "Anton Pjetri",        squadra: "Ponte agli Stolli", gol: 0 },
-    { giocatore: "Roberto Chelaru",     squadra: "Ponte agli Stolli", gol: 0 },
-    { giocatore: "Cristian Boci",       squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Andrea Mingaj", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Jam", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Mattia Tapinassi", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Jauar Nakoua", squadra: "Ponte agli Stolli", gol: 0 },
+    { giocatore: "Mattia Ortichi", squadra: "Ponte agli Stolli", gol: 0 },
   ],
 
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
     campionato: [
-      { giornata: 25, data: "2026-08-02", ora: "16:00", casa: "Ponte agli Stolli", ospite: "Bibbiena Calcio", luogo: "Campo Comunale, Ponte agli Stolli" },
-      { giornata: 25, data: "2026-08-02", ora: "16:00", casa: "Subbiano", ospite: "Foiano", luogo: "Campo Sportivo Subbiano" },
-      { giornata: 26, data: "2026-08-09", ora: "16:00", casa: "Chiassa Veneri", ospite: "Ponte agli Stolli", luogo: "Campo Chiassa Veneri" },
-      { giornata: 27, data: "2026-08-16", ora: "16:30", casa: "Ponte agli Stolli", ospite: "Rondine Calcio", luogo: "Campo Comunale, Ponte agli Stolli" },
-      { giornata: 28, data: "2026-08-23", ora: "16:30", casa: "Poppi", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo Poppi" },
+      { giornata: 1, data: "2026-10-03", ora: "15:00", casa: "Ginestra", ospite: "Ponte agli Stolli", luogo: "Campo Pestello Verde, Montevarchi (AR)" },
     ],
-    coppa: [
-      { giornata: "Quarti di finale", data: "2026-07-30", ora: "20:30", casa: "Ponte agli Stolli", ospite: "Castiglion Fibocchi", luogo: "Campo Comunale, Ponte agli Stolli" },
-      { giornata: "Semifinale", data: "2026-08-13", ora: "20:30", casa: "Da definire", ospite: "Ponte agli Stolli", luogo: "Da definire" },
-    ],
+    coppa: [],
   },
 
   // ---------------- RISULTATI (partite giocate + pagelle) ----------------
   risultati: [
     {
       id: "r1",
-      competizione: "Campionato",
-      giornata: 24,
-      data: "2026-07-19",
-      casa: "Ponte agli Stolli",
-      ospite: "Ambra Vallesanta",
-      golCasa: 3,
-      golOspite: 1,
-      pagelle: [
-        { giocatore: "Marco Galli", ruolo: "Portiere", voto: 6.5, nota: "Sicuro tra i pali, para un rigore nel primo tempo." },
-        { giocatore: "Andrea Rossi", ruolo: "Attaccante", voto: 7.5, nota: "Doppietta e assist, partita da protagonista." },
-        { giocatore: "Davide Conti", ruolo: "Centrocampista", voto: 7, nota: "Gol e grande corsa per tutta la gara." },
-        { giocatore: "Riccardo Lombardi", ruolo: "Attaccante", voto: 6, nota: "Poco servito, ma sempre pericoloso." },
-        { giocatore: "Simone Bardi", ruolo: "Difensore", voto: 6, nota: "Attento in marcatura, chiude bene gli spazi." },
-      ],
-    },
-    {
-      id: "r2",
-      competizione: "Campionato",
-      giornata: 23,
-      data: "2026-07-12",
-      casa: "Terranuova Traiana",
+      competizione: "Amichevole",
+      giornata: null,
+      data: "2026-09-24",
+      casa: "San Cipriano",
       ospite: "Ponte agli Stolli",
-      golCasa: 2,
-      golOspite: 2,
-      pagelle: [
-        { giocatore: "Marco Galli", ruolo: "Portiere", voto: 6, nota: "Incolpevole sui due gol subiti." },
-        { giocatore: "Andrea Rossi", ruolo: "Attaccante", voto: 6.5, nota: "Un gol pesante che vale il pareggio." },
-        { giocatore: "Luca Fontana", ruolo: "Difensore", voto: 5.5, nota: "Qualche errore di troppo in disimpegno." },
-        { giocatore: "Davide Conti", ruolo: "Centrocampista", voto: 6.5, nota: "Regia ordinata, buona gara." },
-      ],
-    },
-    {
-      id: "r3",
-      competizione: "Coppa",
-      giornata: "Ottavi di finale",
-      data: "2026-07-05",
-      casa: "Ponte agli Stolli",
-      ospite: "Laterina",
-      golCasa: 4,
+      golCasa: 1,
       golOspite: 0,
-      pagelle: [
-        { giocatore: "Marco Galli", ruolo: "Portiere", voto: 6, nota: "Serata tranquilla, clean sheet." },
-        { giocatore: "Riccardo Lombardi", ruolo: "Attaccante", voto: 8, nota: "Tripletta, in serata di grazia." },
-        { giocatore: "Davide Conti", ruolo: "Centrocampista", voto: 7, nota: "Gol e ottima prestazione a centrocampo." },
-      ],
+      pagelle: [],
     },
   ],
 
@@ -133,12 +94,14 @@ const SITE_DATA = {
     { numero: 11, nome: "Emanuele Imperatore", ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 13, nome: "Elia Gabbrielli",     ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 15, nome: "Luca Bonchi",         ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
-    { numero: 16, nome: "Tommaso Morandini",   ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 17, nome: "Anton Pjetri",        ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
-    { numero: 18, nome: "Roberto Chelaru",     ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 7,  nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
     { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
-    { numero: 19, nome: "Cristian Boci",       ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
+    { numero: null, nome: "Andrea Mingaj", ruolo: "Difensore", nascita: null, presenze: 0, gol: 0 },
+    { numero: null, nome: "Jam", ruolo: "Attaccante", nascita: null, presenze: 0, gol: 0 },
+    { numero: null, nome: "Mattia Tapinassi", ruolo: "Difensore", nascita: null, presenze: 0, gol: 0 },
+    { numero: null, nome: "Jauar Nakoua", ruolo: "Attaccante", nascita: null, presenze: 0, gol: 0 },
+    { numero: null, nome: "Mattia Ortichi", ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
   ],
 
   // ---------------- STAFF ----------------
