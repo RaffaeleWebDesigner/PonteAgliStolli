@@ -111,7 +111,7 @@ const SITE_DATA = {
     { numero: 8,  nome: "Gabriele Taverna",    ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 1, gol: 1 },
     { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
-    { numero: 11, nome: "Gamal Ibrahim Ahmed Ibrahim Gabr", ruolo: "",  nascita: null, presenze: 0, gol: 0 },
+    { numero: 11, nome: "Gamal Ibrahim Ahmed Ibrahim Gabr", ruolo: "Attaccante", nascita: null, presenze: 0, gol: 0 },
     { numero: 13, nome: "Luca Bonchi",         ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 14, nome: "Tommaso Marini",      ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 16, nome: "Samuele Arvia",       ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
