@@ -588,6 +588,16 @@ td.center, th.center { text-align: center; }
 .badge-pill.draw { background: #fdf1d6; color: var(--warning); }
 .badge-pill.loss { background: #fbdedb; color: var(--danger); }
 
+.reti-note {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+.reti-note strong { color: var(--maroon-dark); margin-right: 6px; }
+
 .empty-note {
   color: var(--text-light);
   font-size: 0.9rem;

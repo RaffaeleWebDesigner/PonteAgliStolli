@@ -66,11 +66,12 @@ function renderClassifica(targetSelector, limit) {
 function renderMarcatori(targetSelector, limit) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
-  const rows = limit ? SITE_DATA.marcatori.slice(0, limit) : SITE_DATA.marcatori;
+  const sorted = [...SITE_DATA.marcatori].sort((a, b) => b.gol - a.gol);
+  const rows = limit ? sorted.slice(0, limit) : sorted;
   el.innerHTML = rows.map((m, i) => `
     <tr class="${isOwnTeam(m.squadra) ? "own-team" : ""}">
       <td class="center"><span class="pos-badge">${i + 1}</span></td>
-      <td>${m.giocatore}</td>
+      <td>${m.giocatore}${m.numero != null ? ` <span style="color:var(--text-light);font-weight:400;">#${m.numero}</span>` : ""}</td>
       <td class="center"><strong>${m.gol}</strong></td>
     </tr>
   `).join("");
@@ -154,7 +155,13 @@ function renderRisultatoBlock(r) {
     <div class="pagelle-panel" id="pagelle-${r.id}">
       <h4>Pagelle giocatori — ${r.casa} ${r.golCasa}-${r.golOspite} ${r.ospite}</h4>
       <div class="pagelle-list">
-        ${r.pagelle.length ? "" : '<div class="empty-note">Pagelle non ancora disponibili.</div>'}
+        ${r.pagelle.length ? "" : (r.reti && r.reti.length ? `
+          <div class="reti-note">
+            <strong>Reti:</strong>
+            ${r.reti.map(g => `${g.giocatore}${g.numero != null ? " #" + g.numero : ""}${g.gol > 1 ? " (" + g.gol + ")" : ""}`).join(", ")}
+          </div>
+          <div class="empty-note">Pagelle non ancora disponibili.</div>
+        ` : '<div class="empty-note">Pagelle non ancora disponibili.</div>')}
         ${r.pagelle.map(p => `
           <div class="pagella-item">
             <div class="voto ${votoClass(p.voto)}">${p.voto}</div>
@@ -260,23 +267,17 @@ function renderStaff(targetSelector) {
 function renderSponsor(targetSelector) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
-  const tiers = ["Main Sponsor", "Gold Sponsor", "Silver Sponsor"];
-  el.innerHTML = tiers.map(tier => {
-    const items = SITE_DATA.sponsor.filter(s => s.livello === tier);
-    if (!items.length) return "";
-    return `
-      <div class="sponsor-tier-title">${tier}</div>
-      <div class="grid cols-3">
-        ${items.map(s => `
-          <div class="sponsor-card">
-            <div class="sponsor-logo">${s.nome.split(" ")[0]}</div>
-            <div class="name">${s.nome}</div>
-            <div class="desc">${s.desc}</div>
-          </div>
-        `).join("")}
-      </div>
-    `;
-  }).join("");
+  el.innerHTML = `
+    <div class="grid cols-3">
+      ${SITE_DATA.sponsor.map(s => `
+        <div class="sponsor-card">
+          <div class="sponsor-logo">${s.nome.split(" ")[0]}</div>
+          <div class="name">${s.nome}</div>
+          ${s.desc ? `<div class="desc">${s.desc}</div>` : ""}
+        </div>
+      `).join("")}
+    </div>
+  `;
 }
 
 /* ---------------- HOME WIDGETS ---------------- */
