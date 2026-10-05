@@ -7,7 +7,9 @@
 <meta name="description" content="Sito ufficiale ASD Ponte agli Stolli: classifica, marcatori, calendario, risultati e pagelle, rosa, staff e sponsor.">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/fx.css">
+<link rel="stylesheet" href="assets/css/fx2.css">
 <script>try{if(sessionStorage.getItem('pas-intro')){document.documentElement.classList.add('fx-no-intro')}else{sessionStorage.setItem('pas-intro','1')}}catch(e){}</script>
+<script>try{var d=JSON.parse(sessionStorage.getItem('fx-vt')||'null');sessionStorage.removeItem('fx-vt');var h=document.documentElement;if(d&&Date.now()-d.t<8000){h.style.setProperty('--vt-x',d.x+'px');h.style.setProperty('--vt-y',d.y+'px');h.style.setProperty('--vt-r',d.r+'px');h.classList.add('fx-vt-wipe')}if(localStorage.getItem('pas-theme')==='dark')h.setAttribute('data-theme','dark')}catch(e){}</script>
 </head>
 <body data-page="home">
 
@@ -149,5 +151,6 @@
 <script src="assets/js/main.js"></script>
 <script>renderHomeWidgets();</script>
 <script src="assets/js/fx.js"></script>
+<script src="assets/js/fx2.js"></script>
 </body>
 </html>
