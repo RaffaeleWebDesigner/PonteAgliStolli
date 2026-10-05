@@ -8,6 +8,15 @@ function formatData(iso) {
   return `${GIORNI_IT[d.getDay()]} ${String(d.getDate()).padStart(2,"0")} ${MESI_IT[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function descrizioneQuando(m) {
+  if (m.data) return `${formatData(m.data)}${m.ora ? " · " + m.ora : ""}`;
+  return `Data da definire${m.periodo ? " · " + m.periodo : ""}`;
+}
+
+function descrizioneLuogo(m) {
+  return m.luogo || "Luogo da definire";
+}
+
 function isOwnTeam(nome) {
   return nome === TEAM_NAME;
 }
@@ -101,7 +110,7 @@ function renderCalendarioLista(matches, targetSelector) {
             <span style="color:var(--text-light);font-weight:400;">vs</span>
             <span class="${isOwnTeam(m.ospite) ? "own" : ""}">${m.ospite}</span>
           </div>
-          <div class="meta">${formatData(m.data)} · ${m.ora}<br>${m.luogo}</div>
+          <div class="meta">${descrizioneQuando(m)}<br>${descrizioneLuogo(m)}</div>
         </div>
       `).join("")}
     </div>
@@ -285,9 +294,12 @@ function renderHomeWidgets() {
   const prossima = document.querySelector("#widget-prossima");
   if (prossima) {
     const tutte = [...SITE_DATA.calendario.campionato, ...SITE_DATA.calendario.coppa, ...SITE_DATA.calendario.amichevoli]
-      .filter(m => isOwnTeam(m.casa) || isOwnTeam(m.ospite))
+      .filter(m => isOwnTeam(m.casa) || isOwnTeam(m.ospite));
+    const adesso = new Date();
+    const conData = tutte
+      .filter(m => m.data && new Date(`${m.data}T${m.ora || "23:59"}:00`) >= adesso)
       .sort((a, b) => new Date(a.data) - new Date(b.data));
-    const next = tutte[0];
+    const next = conData[0] || tutte.find(m => !m.data);
     prossima.innerHTML = next ? `
       <div class="match-row" style="margin-bottom:0;">
         <div class="teams">
@@ -295,7 +307,7 @@ function renderHomeWidgets() {
           <span style="color:var(--text-light);font-weight:400;">vs</span>
           <span class="${isOwnTeam(next.ospite) ? "own" : ""}">${next.ospite}</span>
         </div>
-        <div class="meta">${formatData(next.data)} · ${next.ora}<br>${next.luogo}</div>
+        <div class="meta">${descrizioneQuando(next)}<br>${descrizioneLuogo(next)}</div>
       </div>
     ` : `<div class="empty-note">Nessuna partita in programma.</div>`;
   }

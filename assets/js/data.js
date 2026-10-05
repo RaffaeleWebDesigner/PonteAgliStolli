@@ -30,7 +30,7 @@ const SITE_DATA = {
     { pos: 11, squadra: "Ponte agli Stolli", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
     { pos: 12, squadra: "San Cipriano", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
     { pos: 13, squadra: "Sereto GS", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
-    { pos: 14, squadra: "ASD Vaccherreccia", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
+    { pos: 14, squadra: "ASD Vacchereccia", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
   ],
   promozionePos: 0,     // fino a questa posizione (inclusa): zona promozione/playoff (0 = nessuna)
   retrocessionePos: 99, // da questa posizione (inclusa): zona retrocessione (99 = nessuna)
@@ -63,11 +63,36 @@ const SITE_DATA = {
 
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
-    campionato: [],
-    coppa: [],
-    amichevoli: [
-      { giornata: null, data: "2026-10-03", ora: "15:00", casa: "Ginestra", ospite: "Ponte agli Stolli", luogo: "Campo Pestello Verde, Montevarchi (AR)" },
+    campionato: [
+      { giornata: "1ª Andata", data: "2026-10-09", ora: "21:00", periodo: "9-12 ottobre 2026", casa: "Ponte agli Stolli", ospite: "Ginestra", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "2ª Andata", data: null, ora: null, periodo: "16-19 ottobre 2026", casa: "Malva", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "3ª Andata", data: "2026-10-23", ora: "21:00", periodo: "23-26 ottobre 2026", casa: "Ponte agli Stolli", ospite: "Pietrapiana Giglio Verde", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "4ª Andata", data: null, ora: null, periodo: "30 ottobre - 2 novembre 2026", casa: "Sereto GS", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "5ª Andata", data: null, ora: null, periodo: "6-9 novembre 2026", casa: "Pol. Il Ponte", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "6ª Andata", data: "2026-11-13", ora: "21:00", periodo: "13-16 novembre 2026", casa: "Ponte agli Stolli", ospite: "Levane Leona", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "7ª Andata", data: null, ora: null, periodo: "20-23 novembre 2026", casa: "Montanino", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "8ª Andata", data: "2026-11-27", ora: "21:00", periodo: "27-30 novembre 2026", casa: "Ponte agli Stolli", ospite: "Baco Donnini", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "9ª Andata", data: null, ora: null, periodo: "4-7 dicembre 2026", casa: "ASD Vacchereccia", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "10ª Andata", data: "2026-12-11", ora: "21:00", periodo: "11-14 dicembre 2026", casa: "Ponte agli Stolli", ospite: "AS Giglio", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "11ª Andata", data: null, ora: null, periodo: "18-21 dicembre 2026", casa: "ASD Gaiole", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "12ª Andata", data: "2027-01-08", ora: "21:00", periodo: "8-11 gennaio 2027", casa: "Ponte agli Stolli", ospite: "San Cipriano", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "13ª Andata", data: null, ora: null, periodo: "15-18 gennaio 2027", casa: "Levanella '86", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "1ª Ritorno", data: null, ora: null, periodo: "22-25 gennaio 2027", casa: "Ginestra", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "2ª Ritorno", data: "2027-01-29", ora: "21:00", periodo: "29 gennaio - 1 febbraio 2027", casa: "Ponte agli Stolli", ospite: "Malva", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "3ª Ritorno", data: null, ora: null, periodo: "5-8 febbraio 2027", casa: "Pietrapiana Giglio Verde", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "4ª Ritorno", data: "2027-02-12", ora: "21:00", periodo: "12-15 febbraio 2027", casa: "Ponte agli Stolli", ospite: "Sereto GS", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "5ª Ritorno", data: "2027-02-19", ora: "21:00", periodo: "19-22 febbraio 2027", casa: "Ponte agli Stolli", ospite: "Pol. Il Ponte", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "6ª Ritorno", data: null, ora: null, periodo: "26 febbraio - 1 marzo 2027", casa: "Levane Leona", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "7ª Ritorno", data: "2027-03-05", ora: "21:00", periodo: "5-8 marzo 2027", casa: "Ponte agli Stolli", ospite: "Montanino", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "8ª Ritorno", data: null, ora: null, periodo: "12-15 marzo 2027", casa: "Baco Donnini", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "9ª Ritorno", data: "2027-03-19", ora: "21:00", periodo: "19-22 marzo 2027", casa: "Ponte agli Stolli", ospite: "ASD Vacchereccia", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "10ª Ritorno", data: null, ora: null, periodo: "2-5 aprile 2027", casa: "AS Giglio", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "11ª Ritorno", data: "2027-04-09", ora: "21:00", periodo: "9-12 aprile 2027", casa: "Ponte agli Stolli", ospite: "ASD Gaiole", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
+      { giornata: "12ª Ritorno", data: null, ora: null, periodo: "16-19 aprile 2027", casa: "San Cipriano", ospite: "Ponte agli Stolli", luogo: null },
+      { giornata: "13ª Ritorno", data: "2027-04-23", ora: "21:00", periodo: "23-26 aprile 2027", casa: "Ponte agli Stolli", ospite: "Levanella '86", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
     ],
+    coppa: [],
+    amichevoli: [],
   },
 
   // ---------------- RISULTATI (partite giocate + pagelle) ----------------
@@ -99,6 +124,22 @@ const SITE_DATA = {
       ],
       pagelle: [],
     },
+    {
+      id: "r3",
+      competizione: "Amichevole",
+      giornata: null,
+      data: "2026-10-03",
+      casa: "Ginestra",
+      ospite: "Ponte agli Stolli",
+      golCasa: 1,
+      golOspite: 4,
+      reti: [
+        { giocatore: "Amin Nider", numero: 10, gol: 1 },
+        { giocatore: "Gamal Ibrahim Ahmed Ibrahim Gabr", numero: 11, gol: 2 },
+        { giocatore: "Mirko Borgogni", numero: 99, gol: 1 },
+      ],
+      pagelle: [],
+    },
   ],
 
   // ---------------- ROSA GIOCATORI ----------------
@@ -110,8 +151,8 @@ const SITE_DATA = {
     { numero: 6,  nome: "Jaouhar Nakoua",      ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
     { numero: 8,  nome: "Gabriele Taverna",    ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 1, gol: 1 },
-    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
-    { numero: 11, nome: "Gamal Ibrahim Ahmed Ibrahim Gabr", ruolo: "Attaccante", nascita: null, presenze: 0, gol: 0 },
+    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 1, gol: 1 },
+    { numero: 11, nome: "Gamal Ibrahim Ahmed Ibrahim Gabr", ruolo: "Attaccante", nascita: null, presenze: 1, gol: 2 },
     { numero: 13, nome: "Luca Bonchi",         ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 14, nome: "Tommaso Marini",      ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 16, nome: "Samuele Arvia",       ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
@@ -121,7 +162,7 @@ const SITE_DATA = {
     { numero: 30, nome: "Emanuele Imperatore", ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 34, nome: "Mattia Tapinassi",    ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 77, nome: "Niccolò Consolati",   ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
-    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
+    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 1, gol: 1 },
   ],
 
   // ---------------- STAFF ----------------
