@@ -161,7 +161,7 @@ function renderRisultatoBlock(r) {
         &nbsp; <span class="chevron">&#9656; pagelle</span>
       </div>
     </div>
-    <div class="pagelle-panel" id="pagelle-${r.id}">
+    <div class="pagelle-panel" id="pagelle-${r.id}"><div class="pagelle-inner">
       <h4>Pagelle giocatori — ${r.casa} ${r.golCasa}-${r.golOspite} ${r.ospite}</h4>
       <div class="pagelle-list">
         ${r.pagelle.length ? "" : (r.reti && r.reti.length ? `
@@ -181,7 +181,7 @@ function renderRisultatoBlock(r) {
           </div>
         `).join("")}
       </div>
-    </div>
+    </div></div>
   </div>`;
 }
 
@@ -301,7 +301,7 @@ function renderHomeWidgets() {
       .sort((a, b) => new Date(a.data) - new Date(b.data));
     const next = conData[0] || tutte.find(m => !m.data);
     prossima.innerHTML = next ? `
-      <div class="match-row" style="margin-bottom:0;">
+      <div class="match-row" style="margin-bottom:0;"${next.data ? ` data-kickoff="${next.data}T${next.ora || "00:00"}:00"` : ""}>
         <div class="teams">
           <span class="${isOwnTeam(next.casa) ? "own" : ""}">${next.casa}</span>
           <span style="color:var(--text-light);font-weight:400;">vs</span>

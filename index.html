@@ -6,8 +6,22 @@
 <title>ASD Ponte agli Stolli | Sito Ufficiale</title>
 <meta name="description" content="Sito ufficiale ASD Ponte agli Stolli: classifica, marcatori, calendario, risultati e pagelle, rosa, staff e sponsor.">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/fx.css">
+<script>try{if(sessionStorage.getItem('pas-intro')){document.documentElement.classList.add('fx-no-intro')}else{sessionStorage.setItem('pas-intro','1')}}catch(e){}</script>
 </head>
 <body data-page="home">
+
+<div id="fx-intro" aria-hidden="true">
+  <div class="fx-intro-inner">
+    <div class="fx-intro-crest-wrap">
+      <span class="fx-intro-ring"></span>
+      <img class="fx-intro-crest" src="assets/img/logo.png" alt="">
+    </div>
+    <div class="fx-intro-title"><span>Ponte</span><span>agli</span><span>Stolli</span></div>
+    <div class="fx-intro-sub">La storia ricomincia</div>
+  </div>
+</div>
+
 
 <header class="site-header">
   <div class="container">
@@ -134,5 +148,6 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script>renderHomeWidgets();</script>
+<script src="assets/js/fx.js"></script>
 </body>
 </html>

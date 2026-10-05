@@ -24,7 +24,11 @@
 
 html { scroll-behavior: smooth; }
 
-html, body { overflow-x: hidden; max-width: 100%; }
+html, body { max-width: 100%; }
+html { overflow-x: hidden; }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
 
 body {
   margin: 0;
