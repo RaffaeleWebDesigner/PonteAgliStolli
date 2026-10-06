@@ -339,4 +339,33 @@ function renderLeagueInfo() {
   document.querySelectorAll("[data-league]").forEach(el => { el.textContent = text; });
 }
 
-document.addEventListener("DOMContentLoaded", () => { initNav(); renderLeagueInfo(); });
+/* ---------------- DATI LEGALI ---------------- */
+const ETICHETTE_SOCIETA = { sede: "sede legale", codiceFiscale: "codice fiscale", email: "email di contatto", pec: "PEC", denominazione: "denominazione" };
+
+function renderSocieta() {
+  const s = SITE_DATA.societa || {};
+  document.querySelectorAll("[data-societa]").forEach(el => {
+    const chiave = el.dataset.societa;
+    const valore = String(s[chiave] || "").trim();
+    if (!valore) {
+      if (el.hasAttribute("data-opzionale")) {
+        (el.closest("[data-riga]") || el).remove();
+      } else {
+        el.textContent = `[${ETICHETTE_SOCIETA[chiave] || chiave} da completare]`;
+        el.classList.add("da-completare");
+      }
+      return;
+    }
+    if (chiave === "email" || chiave === "pec") {
+      const a = document.createElement("a");
+      a.href = "mailto:" + valore;
+      a.textContent = valore;
+      el.textContent = "";
+      el.appendChild(a);
+    } else {
+      el.textContent = valore;
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initNav(); renderLeagueInfo(); renderSocieta(); });

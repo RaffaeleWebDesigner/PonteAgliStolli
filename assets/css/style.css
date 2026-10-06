@@ -663,3 +663,74 @@ td.center, th.center { text-align: center; }
     flex-wrap: wrap;
   }
 }
+
+/* ---------- Pagine legali e disclaimer ---------- */
+.legal-meta { color: var(--text-light); font-size: 0.85rem; margin: -6px 0 18px; }
+.legal-body { max-width: 860px; }
+.legal-body h3 { margin: 30px 0 8px; font-size: 1.35rem; }
+.legal-body p, .legal-body li { font-size: 0.95rem; line-height: 1.7; }
+.legal-body ul { padding-left: 20px; margin: 0 0 1em; }
+.legal-body li { margin-bottom: 6px; }
+.legal-body table { min-width: 0; font-size: 0.85rem; }
+.legal-body td { vertical-align: top; }
+.legal-body code { white-space: nowrap; }
+.legal-box {
+  background: var(--sky-light);
+  border: 1px solid var(--sky);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 0 0 1.2em;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.disclaimer-note {
+  margin-top: 22px;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-light);
+  background: var(--sky-light);
+  border-left: 3px solid var(--sky-dark);
+  border-radius: 0 8px 8px 0;
+}
+.disclaimer-note a { font-weight: 700; }
+.footer-legal { margin: 0 0 8px; }
+.footer-legal a { margin: 0 8px; font-size: 0.8rem; font-weight: 600; }
+.footer-bottom p { margin: 0; }
+.da-completare { background: #fff3a3; color: #5a4a00; padding: 0 4px; border-radius: 3px; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .legal-body table, .legal-body tbody, .legal-body tr, .legal-body td { display: block; }
+  .legal-body thead { display: none; }
+  .legal-body tr { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  .legal-body tr:last-child { border-bottom: none; }
+  .legal-body td { padding: 2px 0; border: 0; }
+  .legal-body td::before { content: attr(data-label) ": "; font-weight: 700; color: var(--maroon-dark); }
+  .legal-body tbody tr:hover { background: transparent; }
+}
+
+/* ---------- Rifiniture: footer, classifica su telefono, widget home ---------- */
+.site-footer .footer-bottom {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+@media (max-width: 720px) {
+  /* spazio sotto il testo: il pulsante "torna su" non deve coprire l'ultima riga */
+  .site-footer .footer-bottom { padding-bottom: 78px; }
+}
+
+/* widget home (desktop): meno colonne e spazi piu' stretti, i nomi non vanno a capo */
+@media (min-width: 641px) {
+  #widget-classifica th:nth-child(n+8):nth-child(-n+9),
+  #widget-classifica td:nth-child(n+8):nth-child(-n+9) { display: none; }
+  .widget-card thead th, .widget-card tbody td { padding: 9px 8px; }
+}
+
+/* classifica completa su telefono: tutte le colonne dentro lo schermo */
+@media (max-width: 640px) {
+  #classifica-table { min-width: 0; font-size: 0.8rem; }
+  #classifica-table thead th, #classifica-table tbody td { padding: 8px 3px; }
+  #classifica-table thead th:first-child, #classifica-table tbody td:first-child { padding-left: 8px; }
+}

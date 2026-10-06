@@ -15,6 +15,17 @@ const SITE_DATA = {
   // ---------------- CAMPIONATO ----------------
   campionato: { nome: "Campionato UISP", categoria: "Categoria 2", girone: "Girone C", stagione: "2026/2027" },
 
+  // ---------------- DATI LEGALI (usati da Privacy, Cookie, Note legali e dalle note a fondo pagina) ----------------
+  // Lasciati vuoti i campi che non conosco: sul sito compaiono evidenziati in giallo finche' non vengono compilati.
+  societa: {
+    denominazione: "Associazione Sportiva Dilettantistica Ponte agli Stolli (ASD Ponte agli Stolli)",
+    sede: "",           // es. "Via Esempio 1, 50063 Figline e Incisa Valdarno (FI)"
+    codiceFiscale: "",
+    email: "",          // email a cui scrivere per esercitare i diritti privacy o chiedere rimozioni
+    pec: "",            // facoltativa: se vuota la riga PEC non viene mostrata
+    aggiornamento: "6 ottobre 2026",
+  },
+
   // ---------------- CLASSIFICA ----------------
   classifica: [
     { pos: 1, squadra: "AS Giglio", pg: 0, v: 0, n: 0, p: 0, gf: 0, gs: 0 },
