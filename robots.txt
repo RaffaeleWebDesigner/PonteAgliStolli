@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asdponteaglistolli.it/sitemap.xml

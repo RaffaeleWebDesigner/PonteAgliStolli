@@ -1,4 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+/* Font serviti dal sito (Bebas Neue e Montserrat, licenza SIL OFL): nessuna richiesta a Google. */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bebas-neue-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bebas-neue-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 :root {
   --maroon: #6d1b34;
@@ -733,4 +765,50 @@ td.center, th.center { text-align: center; }
   #classifica-table { min-width: 0; font-size: 0.8rem; }
   #classifica-table thead th, #classifica-table tbody td { padding: 8px 3px; }
   #classifica-table thead th:first-child, #classifica-table tbody td:first-child { padding-left: 8px; }
+}
+
+/* ---------- Gruppi staff, foto, bottoni sulle partite ---------- */
+.staff-group { margin-bottom: 34px; }
+.group-title {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding-bottom: 6px;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--maroon);
+  border-bottom: 2px solid var(--sky);
+}
+.player-photo, .staff-photo { overflow: hidden; }
+.player-photo img, .staff-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+.match-actions { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; margin-top: 2px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--maroon);
+  background: var(--sky-light);
+  border: 1px solid var(--sky);
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.chip:hover { background: var(--sky); text-decoration: none; transform: translateY(-1px); }
+
+/* telefono: giocatori e staff su due colonne, schede piu' basse */
+@media (max-width: 560px) {
+  #rosa-grid, .staff-group .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .player-photo, .staff-photo { height: 92px; font-size: 1.8rem; }
+  .player-card .body, .staff-card .body { padding: 10px 8px; }
+  .player-card .number { font-size: 1.3rem; }
+  .player-card .name, .staff-card .name { font-size: 0.85rem; line-height: 1.25; overflow-wrap: anywhere; }
+  .player-card .role, .staff-card .role { font-size: 0.66rem; }
+  .player-card .stats { gap: 10px; font-size: 0.7rem; }
+  .player-card .stats strong { font-size: 0.85rem; }
 }

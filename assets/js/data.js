@@ -23,7 +23,15 @@ const SITE_DATA = {
     codiceFiscale: "",
     email: "",          // email a cui scrivere per esercitare i diritti privacy o chiedere rimozioni
     pec: "",            // facoltativa: se vuota la riga PEC non viene mostrata
+    instagram: "",      // es. "nomeaccount" o il link completo: se vuoto, il link Instagram nel footer resta nascosto
     aggiornamento: "6 ottobre 2026",
+  },
+
+  // ---------------- CAMPI DI GIOCO ----------------
+  // Link a Google Maps dei campi. La chiave deve essere il testo esatto del campo "luogo" delle partite.
+  // Se un campo non e' elencato qui, il bottone "Apri in Maps" cerca il testo del luogo su Google Maps.
+  campi: {
+    "Campo Sportivo il Madonnino - Figline Valdarno": "https://maps.app.goo.gl/PG61SfoZdhuoHYqG7",
   },
 
   // ---------------- CLASSIFICA ----------------
@@ -177,16 +185,17 @@ const SITE_DATA = {
   ],
 
   // ---------------- STAFF ----------------
+  // gruppo: sezione della pagina Staff. foto (facoltativa): percorso di una foto, es. "assets/img/staff/davide-veneri.jpg"
   staff: [
-    { nome: "Elisa Arnetoli",       ruolo: "Presidente" },
-    { nome: "Ciccarelli Agostino",  ruolo: "Vice Presidente" },
-    { nome: "Davide Veneri",        ruolo: "Allenatore" },
-    { nome: "Federico Zenoni",      ruolo: "Secondo Allenatore" },
-    { nome: "Cosimo Arnetoli",      ruolo: "Preparatore dei Portieri" },
-    { nome: "Alberto Tognetti",     ruolo: "Dirigente" },
-    { nome: "Lorenzo Butti",        ruolo: "Accompagnatore" },
-    { nome: "Domenica Taverna",     ruolo: "Accompagnatore" },
-    { nome: "Tommaso Morandini",    ruolo: "Collaboratore" },
+    { gruppo: "Dirigenza",     nome: "Elisa Arnetoli",      ruolo: "Presidente" },
+    { gruppo: "Dirigenza",     nome: "Ciccarelli Agostino", ruolo: "Vice Presidente" },
+    { gruppo: "Dirigenza",     nome: "Alberto Tognetti",    ruolo: "Dirigente" },
+    { gruppo: "Dirigenza",     nome: "Lorenzo Butti",       ruolo: "Accompagnatore" },
+    { gruppo: "Dirigenza",     nome: "Domenico Taverna",    ruolo: "Accompagnatore" },
+    { gruppo: "Dirigenza",     nome: "Tommaso Morandini",   ruolo: "Collaboratore" },
+    { gruppo: "Staff tecnico", nome: "Davide Veneri",       ruolo: "Allenatore" },
+    { gruppo: "Staff tecnico", nome: "Federico Zenoni",     ruolo: "Secondo Allenatore" },
+    { gruppo: "Staff tecnico", nome: "Cosimo Arnetoli",     ruolo: "Preparatore dei Portieri" },
   ],
 
   // ---------------- SPONSOR ----------------

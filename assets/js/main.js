@@ -17,6 +17,66 @@ function descrizioneLuogo(m) {
   return m.luogo || "Luogo da definire";
 }
 
+function urlMaps(luogo) {
+  const noto = (SITE_DATA.campi || {})[luogo];
+  return noto || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(luogo);
+}
+
+/* bottoni "Apri in Maps" e "Aggiungi al calendario" sotto una partita */
+function azioniPartita(m) {
+  const azioni = [];
+  if (m.luogo) azioni.push(`<a class="chip" href="${urlMaps(m.luogo)}" target="_blank" rel="noopener">&#128205; Apri in Maps</a>`);
+  if (m.data) azioni.push(`<button type="button" class="chip" data-ics="${encodeURIComponent(JSON.stringify(m))}">&#128197; Aggiungi al calendario</button>`);
+  return azioni.length ? `<div class="match-actions">${azioni.join("")}</div>` : "";
+}
+
+/* l'orario scritto sul sito e' sempre l'orario italiano: lo converto in UTC qualunque sia il fuso del visitatore */
+function romeToUtc(iso, ora) {
+  const [y, mo, d] = iso.split("-").map(Number);
+  const [h, mi] = (ora || "00:00").split(":").map(Number);
+  const guess = Date.UTC(y, mo - 1, d, h, mi);
+  const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Rome", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(guess));
+  const get = t => Number(parts.find(p => p.type === t).value);
+  const asRome = Date.UTC(get("year"), get("month") - 1, get("day"), get("hour"), get("minute"));
+  return new Date(guess - (asRome - guess));
+}
+
+function creaICS(m) {
+  const fmt = dt => dt.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const esc = t => String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  const piega = riga => (riga.match(/.{1,70}/g) || [riga]).join("\r\n ");
+  const c = SITE_DATA.campionato || {};
+  const inizio = romeToUtc(m.data, m.ora);
+  const fine = new Date(inizio.getTime() + 2 * 3600 * 1000);
+  const dettagli = m.competizione === "Campionato" ? `${c.nome || "Campionato"} ${c.categoria || ""} ${c.girone || ""}`.trim() : (m.competizione || "Partita");
+  const descrizione = `${m.giornata ? m.giornata + " - " : ""}${dettagli}. Data, orario e campo possono cambiare: fanno fede i Comunicati Ufficiali.${m.luogo ? " Mappa: " + urlMaps(m.luogo) : ""}`;
+  const righe = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//ASD Ponte agli Stolli//Calendario//IT", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:${m.data}-${(m.casa + m.ospite).replace(/\W/g, "").toLowerCase()}@asdponteaglistolli.it`,
+    `DTSTAMP:${fmt(new Date())}`, `DTSTART:${fmt(inizio)}`, `DTEND:${fmt(fine)}`,
+    `SUMMARY:${esc(m.casa + " - " + m.ospite)}`,
+    m.luogo ? `LOCATION:${esc(m.luogo)}` : null,
+    `DESCRIPTION:${esc(descrizione)}`,
+    "END:VEVENT", "END:VCALENDAR",
+  ].filter(Boolean).map(piega);
+  return righe.join("\r\n") + "\r\n";
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-ics]");
+  if (!b) return;
+  const m = JSON.parse(decodeURIComponent(b.dataset.ics));
+  const url = URL.createObjectURL(new Blob([creaICS(m)], { type: "text/calendar;charset=utf-8" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `partita-${m.data}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+});
+
 function isOwnTeam(nome) {
   return nome === TEAM_NAME;
 }
@@ -87,7 +147,7 @@ function renderMarcatori(targetSelector, limit) {
 }
 
 /* ---------------- CALENDARIO ---------------- */
-function renderCalendarioLista(matches, targetSelector) {
+function renderCalendarioLista(matches, targetSelector, competizione) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
   if (!matches.length) {
@@ -111,6 +171,7 @@ function renderCalendarioLista(matches, targetSelector) {
             <span class="${isOwnTeam(m.ospite) ? "own" : ""}">${m.ospite}</span>
           </div>
           <div class="meta">${descrizioneQuando(m)}<br>${descrizioneLuogo(m)}</div>
+          ${azioniPartita({ ...m, competizione })}
         </div>
       `).join("")}
     </div>
@@ -130,9 +191,9 @@ function initTabs() {
 }
 
 function initCalendarioTabs() {
-  renderCalendarioLista(SITE_DATA.calendario.campionato, "#lista-campionato");
-  renderCalendarioLista(SITE_DATA.calendario.coppa, "#lista-coppa");
-  renderCalendarioLista(SITE_DATA.calendario.amichevoli, "#lista-amichevoli");
+  renderCalendarioLista(SITE_DATA.calendario.campionato, "#lista-campionato", "Campionato");
+  renderCalendarioLista(SITE_DATA.calendario.coppa, "#lista-coppa", "Coppa");
+  renderCalendarioLista(SITE_DATA.calendario.amichevoli, "#lista-amichevoli", "Amichevole");
   initTabs();
 }
 
@@ -221,6 +282,11 @@ function eta(nascita) {
   return Math.floor(diff / (365.25 * 24 * 3600 * 1000));
 }
 
+/* se la persona ha una foto la mostro, altrimenti le iniziali */
+function immagineScheda(o, classe) {
+  return `<div class="${classe}">${o.foto ? `<img src="${o.foto}" alt="${o.nome}" loading="lazy" decoding="async">` : iniziali(o.nome)}</div>`;
+}
+
 function renderRosa(targetSelector, filtro) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
@@ -230,7 +296,7 @@ function renderRosa(targetSelector, filtro) {
   const ordered = [...list].sort((a, b) => (a.numero ?? 999) - (b.numero ?? 999));
   el.innerHTML = ordered.map(g => `
     <div class="player-card">
-      <div class="player-photo">${iniziali(g.nome)}</div>
+      ${immagineScheda(g, "player-photo")}
       <div class="body">
         ${g.numero != null ? `<div class="number">#${g.numero}</div>` : ""}
         <div class="name">${g.nome}</div>
@@ -261,12 +327,26 @@ function initRosaFiltri() {
 function renderStaff(targetSelector) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
-  el.innerHTML = SITE_DATA.staff.map(s => `
-    <div class="staff-card">
-      <div class="staff-photo">${iniziali(s.nome)}</div>
-      <div class="body">
-        <div class="name">${s.nome}</div>
-        <div class="role">${s.ruolo}</div>
+  const gruppi = [];
+  SITE_DATA.staff.forEach(s => {
+    const nome = s.gruppo || "Staff";
+    let g = gruppi.find(x => x.nome === nome);
+    if (!g) { g = { nome, persone: [] }; gruppi.push(g); }
+    g.persone.push(s);
+  });
+  el.innerHTML = gruppi.map(g => `
+    <div class="staff-group">
+      <h3 class="group-title">${g.nome}</h3>
+      <div class="grid cols-4">
+        ${g.persone.map(s => `
+          <div class="staff-card">
+            ${immagineScheda(s, "staff-photo")}
+            <div class="body">
+              <div class="name">${s.nome}</div>
+              <div class="role">${s.ruolo}</div>
+            </div>
+          </div>
+        `).join("")}
       </div>
     </div>
   `).join("");
@@ -293,7 +373,11 @@ function renderSponsor(targetSelector) {
 function renderHomeWidgets() {
   const prossima = document.querySelector("#widget-prossima");
   if (prossima) {
-    const tutte = [...SITE_DATA.calendario.campionato, ...SITE_DATA.calendario.coppa, ...SITE_DATA.calendario.amichevoli]
+    const tutte = [
+      ...SITE_DATA.calendario.campionato.map(x => ({ ...x, competizione: "Campionato" })),
+      ...SITE_DATA.calendario.coppa.map(x => ({ ...x, competizione: "Coppa" })),
+      ...SITE_DATA.calendario.amichevoli.map(x => ({ ...x, competizione: "Amichevole" })),
+    ]
       .filter(m => isOwnTeam(m.casa) || isOwnTeam(m.ospite));
     const adesso = new Date();
     const conData = tutte
@@ -308,6 +392,7 @@ function renderHomeWidgets() {
           <span class="${isOwnTeam(next.ospite) ? "own" : ""}">${next.ospite}</span>
         </div>
         <div class="meta">${descrizioneQuando(next)}<br>${descrizioneLuogo(next)}</div>
+        ${azioniPartita(next)}
       </div>
     ` : `<div class="empty-note">Nessuna partita in programma.</div>`;
   }
@@ -368,4 +453,20 @@ function renderSocieta() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => { initNav(); renderLeagueInfo(); renderSocieta(); });
+/* link Instagram nel footer: compare solo se in data.js (societa.instagram) c'e' un account */
+function renderSocial() {
+  const ig = String((SITE_DATA.societa || {}).instagram || "").trim();
+  if (!ig) return;
+  const url = /^https?:\/\//.test(ig) ? ig : "https://www.instagram.com/" + ig.replace(/^@/, "") + "/";
+  document.querySelectorAll('[data-social="instagram"]').forEach(li => {
+    li.querySelector("a").href = url;
+    li.hidden = false;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initNav(); renderLeagueInfo(); renderSocieta(); renderSocial(); });
+
+/* rende il sito installabile e utilizzabile anche con poca connessione (sempre dati aggiornati quando sei online) */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
+}
