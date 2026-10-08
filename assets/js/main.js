@@ -372,6 +372,43 @@ function renderSponsor(targetSelector) {
 }
 
 /* ---------------- HOME WIDGETS ---------------- */
+/* "Ultimi risultati": ne mostra quanti ne entrano senza allungare il riquadro oltre "Prossima partita" */
+function renderUltimiRisultati() {
+  const box = document.querySelector("#widget-ultimo");
+  if (!box) return;
+  const results = [...SITE_DATA.risultati].sort((a, b) => new Date(b.data) - new Date(a.data));
+  if (!results.length) { box.innerHTML = `<div class="empty-note">Nessun risultato disponibile.</div>`; return; }
+  const riga = r => `
+      <div class="match-row">
+        <div class="teams">
+          <span class="${isOwnTeam(r.casa) ? "own" : ""}">${r.casa}</span>
+          <span class="score">${r.golCasa} - ${r.golOspite}</span>
+          <span class="${isOwnTeam(r.ospite) ? "own" : ""}">${r.ospite}</span>
+        </div>
+        <div class="meta">${r.competizione} · ${formatData(r.data)} · <a href="risultati.html">vedi pagelle &rarr;</a></div>
+      </div>`;
+  const mostra = n => { box.innerHTML = results.slice(0, n).map(riga).join(""); };
+  const MAX = 5;
+  const card = box.closest(".widget-card");
+  const prossima = document.querySelector("#widget-prossima");
+  const cardProssima = prossima && prossima.closest(".widget-card");
+  mostra(1);
+  if (!card || !cardProssima || Math.abs(card.offsetTop - cardProssima.offsetTop) > 4) {
+    mostra(Math.min(3, results.length));      // riquadri uno sotto l'altro (telefono): nessun limite di altezza
+    return;
+  }
+  const griglia = card.parentElement;
+  griglia.style.alignItems = "start";         // altezze naturali, per misurare
+  const limite = cardProssima.offsetHeight;
+  let k = 1;
+  while (k < Math.min(MAX, results.length)) {
+    mostra(k + 1);
+    if (card.offsetHeight > limite) { mostra(k); break; }
+    k++;
+  }
+  griglia.style.alignItems = "";
+}
+
 function renderHomeWidgets() {
   const prossima = document.querySelector("#widget-prossima");
   if (prossima) {
@@ -399,21 +436,10 @@ function renderHomeWidgets() {
     ` : `<div class="empty-note">Nessuna partita in programma.</div>`;
   }
 
-  const ultimo = document.querySelector("#widget-ultimo");
-  if (ultimo) {
-    const results = [...SITE_DATA.risultati].sort((a, b) => new Date(b.data) - new Date(a.data));
-    const last = results[0];
-    ultimo.innerHTML = last ? `
-      <div class="match-row" style="margin-bottom:0;">
-        <div class="teams">
-          <span class="${isOwnTeam(last.casa) ? "own" : ""}">${last.casa}</span>
-          <span class="score">${last.golCasa} - ${last.golOspite}</span>
-          <span class="${isOwnTeam(last.ospite) ? "own" : ""}">${last.ospite}</span>
-        </div>
-        <div class="meta">${last.competizione} · ${formatData(last.data)} · <a href="risultati.html">vedi pagelle &rarr;</a></div>
-      </div>
-    ` : `<div class="empty-note">Nessun risultato disponibile.</div>`;
-  }
+  renderUltimiRisultati();
+  let ridimensiona;
+  window.addEventListener("resize", () => { clearTimeout(ridimensiona); ridimensiona = setTimeout(renderUltimiRisultati, 150); });
+  window.addEventListener("load", renderUltimiRisultati);
 
   renderClassifica("#widget-classifica tbody", 5);
   renderMarcatori("#widget-marcatori tbody", 5);
