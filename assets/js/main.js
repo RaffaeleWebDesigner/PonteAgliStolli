@@ -457,6 +457,10 @@ const ETICHETTE_SOCIETA = { sede: "sede legale", codiceFiscale: "codice fiscale"
 
 function renderSocieta() {
   const s = SITE_DATA.societa || {};
+  // frasi che dipendono da un dato: se il dato manca, al posto della frase compare il testo alternativo (o niente)
+  document.querySelectorAll("[data-se]").forEach(el => {
+    if (!String(s[el.dataset.se] || "").trim()) el.textContent = el.dataset.altrimenti || "";
+  });
   document.querySelectorAll("[data-societa]").forEach(el => {
     const chiave = el.dataset.societa;
     const valore = String(s[chiave] || "").trim();
