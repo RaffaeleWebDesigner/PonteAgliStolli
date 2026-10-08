@@ -200,8 +200,8 @@ const SITE_DATA = {
 
   // ---------------- SPONSOR ----------------
   sponsor: [
-    { nome: "Surgika", desc: "", sito: "#" },
-    { nome: "Ditta edile Ciccarelli Agostino", desc: "", sito: "#" },
+    { nome: "Surgika", desc: "", sito: "#", logo: "assets/img/sponsor/surgika.png", sfondo: "#ffffff" },
+    { nome: "Ditta edile Ciccarelli Agostino", desc: "", sito: "#", logo: "assets/img/sponsor/ciccarelli-agostino.png", sfondo: "#000000" },
     { nome: "Agenzia Autoscuola Valdarnese", desc: "", sito: "#" },
   ],
 };

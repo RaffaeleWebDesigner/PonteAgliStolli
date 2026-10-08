@@ -360,7 +360,9 @@ function renderSponsor(targetSelector) {
     <div class="grid cols-3">
       ${SITE_DATA.sponsor.map(s => `
         <div class="sponsor-card">
-          <div class="sponsor-logo">${s.nome.split(" ")[0]}</div>
+          ${s.logo
+            ? `<div class="sponsor-logo has-img" style="background:${s.sfondo || "#fff"}"><img src="${s.logo}" alt="Logo ${s.nome}" loading="lazy"></div>`
+            : `<div class="sponsor-logo">${s.nome.split(" ")[0]}</div>`}
           <div class="name">${s.nome}</div>
           ${s.desc ? `<div class="desc">${s.desc}</div>` : ""}
         </div>
