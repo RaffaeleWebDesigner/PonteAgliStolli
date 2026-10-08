@@ -163,17 +163,18 @@ const SITE_DATA = {
   ],
 
   // ---------------- ROSA GIOCATORI ----------------
+  // presenze e gol: contano solo Campionato e Coppa (come la classifica marcatori), le amichevoli no.
   giocatori: [
     { numero: 1,  nome: "Filippo Riminesi",    ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 3,  nome: "Elia Gabbrielli",     ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
-    { numero: 4,  nome: "Andrea Mingaj",       ruolo: "Difensore",      nascita: null, presenze: 1, gol: 2 },
+    { numero: 4,  nome: "Andrea Mingaj",       ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 5,  nome: "Raffaele Ciccarelli", ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 6,  nome: "Jaouhar Nakoua",      ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
     { numero: 7,  nome: "Tommaso Brandi",      ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
     { numero: 8,  nome: "Gabriele Taverna",    ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
-    { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 1, gol: 1 },
-    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 1, gol: 1 },
-    { numero: 11, nome: "Jam", ruolo: "Attaccante", nascita: null, presenze: 1, gol: 2 },
+    { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
+    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
+    { numero: 11, nome: "Jam", ruolo: "Attaccante", nascita: null, presenze: 0, gol: 0 },
     { numero: 13, nome: "Luca Bonchi",         ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 14, nome: "Tommaso Marini",      ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 16, nome: "Samuele Arvia",       ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
@@ -183,7 +184,7 @@ const SITE_DATA = {
     { numero: 30, nome: "Emanuele Imperatore", ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 34, nome: "Mattia Tapinassi",    ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
     { numero: 77, nome: "Niccolò Consolati",   ruolo: "Difensore",      nascita: null, presenze: 0, gol: 0 },
-    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 1, gol: 1 },
+    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
   ],
 
   // ---------------- STAFF ----------------
