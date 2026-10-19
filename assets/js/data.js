@@ -54,13 +54,13 @@ const SITE_DATA = {
 
   // ---------------- CLASSIFICA ----------------
   classifica: [
-    { pos: 1, squadra: "San Cipriano", pg: 2, v: 1, n: 1, p: 0, gf: 5, gs: 2 },
-    { pos: 2, squadra: "Pietrapiana Giglio Verde", pg: 1, v: 1, n: 0, p: 0, gf: 6, gs: 0 },
+    { pos: 1, squadra: "Pietrapiana Giglio Verde", pg: 2, v: 1, n: 1, p: 0, gf: 6, gs: 0 },
+    { pos: 2, squadra: "San Cipriano", pg: 2, v: 1, n: 1, p: 0, gf: 5, gs: 2 },
     { pos: 3, squadra: "Ponte agli Stolli", pg: 2, v: 1, n: 0, p: 1, gf: 5, gs: 4 },
     { pos: 4, squadra: "Ginestra", pg: 1, v: 1, n: 0, p: 0, gf: 2, gs: 1 },
-    { pos: 5, squadra: "Levane Leona", pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3 },
-    { pos: 6, squadra: "ASD Gaiole", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
-    { pos: 7, squadra: "AS Giglio", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
+    { pos: 5, squadra: "AS Giglio", pg: 2, v: 0, n: 2, p: 0, gf: 2, gs: 2 },
+    { pos: 6, squadra: "Levane Leona", pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3 },
+    { pos: 7, squadra: "ASD Gaiole", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
     { pos: 8, squadra: "Pol. Il Ponte", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
     { pos: 9, squadra: "Montanino", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
     { pos: 10, squadra: "ASD Vacchereccia", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
