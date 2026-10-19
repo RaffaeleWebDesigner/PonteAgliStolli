@@ -13,10 +13,11 @@ const TEAM_NAME = "Ponte agli Stolli";
 const SITE_DATA = {
 
   // ---------------- CAMPIONATO ----------------
-  campionato: { nome: "Campionato UISP", categoria: "Categoria 2", girone: "Girone C", stagione: "2026/2027" },
+  campionato: { nome: "Campionato UISP", categoria: "Categoria 2", girone: "Girone C", stagione: "2026/2027",
+    puntiVittoria: 2, puntiPareggio: 1 },   // punti in classifica: in questo campionato 2 per la vittoria, 1 per il pareggio
 
   // ---------------- DATI LEGALI (usati da Privacy, Cookie, Note legali e dalle note a fondo pagina) ----------------
-  // Lasciati vuoti i campi che non conosco: sul sito compaiono evidenziati in giallo finche' non vengono compilati.
+  // Campi vuoti: nelle pagine legali la frase che li usa viene sostituita da un testo neutro finche' non vengono compilati.
   societa: {
     denominazione: "Associazione Sportiva Dilettantistica Ponte agli Stolli (ASD Ponte agli Stolli)",
     sede: "",           // es. "Via Esempio 1, 50063 Figline e Incisa Valdarno (FI)"

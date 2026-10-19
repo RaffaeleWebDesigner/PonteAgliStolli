@@ -112,7 +112,8 @@ function renderClassifica(targetSelector, limit) {
   const rows = limit ? SITE_DATA.classifica.slice(0, limit) : SITE_DATA.classifica;
   el.innerHTML = rows.map(r => {
     const diff = r.gf - r.gs;
-    const punti = r.v * 3 + r.n;
+    const camp = SITE_DATA.campionato || {};
+    const punti = r.v * (camp.puntiVittoria ?? 3) + r.n * (camp.puntiPareggio ?? 1);
     let posClass = "";
     if (r.pos <= SITE_DATA.promozionePos) posClass = "promo";
     else if (r.pos >= SITE_DATA.retrocessionePos) posClass = "relega";
