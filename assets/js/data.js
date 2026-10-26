@@ -54,20 +54,20 @@ const SITE_DATA = {
 
   // ---------------- CLASSIFICA ----------------
   classifica: [
-    { pos: 1, squadra: "Pietrapiana Giglio Verde", pg: 2, v: 1, n: 1, p: 0, gf: 6, gs: 0 },
-    { pos: 2, squadra: "San Cipriano", pg: 2, v: 1, n: 1, p: 0, gf: 5, gs: 2 },
-    { pos: 3, squadra: "Ponte agli Stolli", pg: 2, v: 1, n: 0, p: 1, gf: 5, gs: 4 },
-    { pos: 4, squadra: "Ginestra", pg: 1, v: 1, n: 0, p: 0, gf: 2, gs: 1 },
-    { pos: 5, squadra: "AS Giglio", pg: 2, v: 0, n: 2, p: 0, gf: 2, gs: 2 },
-    { pos: 6, squadra: "Levane Leona", pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3 },
-    { pos: 7, squadra: "ASD Gaiole", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
-    { pos: 8, squadra: "Pol. Il Ponte", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
-    { pos: 9, squadra: "Montanino", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
-    { pos: 10, squadra: "ASD Vacchereccia", pg: 1, v: 0, n: 1, p: 0, gf: 2, gs: 2 },
-    { pos: 11, squadra: "Baco Donnini", pg: 1, v: 0, n: 1, p: 0, gf: 1, gs: 1 },
-    { pos: 12, squadra: "Levanella '86", pg: 1, v: 0, n: 1, p: 0, gf: 1, gs: 1 },
-    { pos: 13, squadra: "Malva", pg: 2, v: 0, n: 0, p: 2, gf: 1, gs: 6 },
-    { pos: 14, squadra: "Sereto GS", pg: 1, v: 0, n: 0, p: 1, gf: 0, gs: 6 },
+    { pos: 1, squadra: "San Cipriano", pg: 3, v: 2, n: 1, p: 0, gf: 10, gs: 4 },
+    { pos: 2, squadra: "ASD Gaiole", pg: 3, v: 1, n: 2, p: 0, gf: 6, gs: 3 },
+    { pos: 3, squadra: "Ponte agli Stolli", pg: 3, v: 2, n: 0, p: 1, gf: 6, gs: 3 },
+    { pos: 4, squadra: "ASD Vacchereccia", pg: 3, v: 1, n: 2, p: 0, gf: 6, gs: 3 },
+    { pos: 5, squadra: "Ginestra", pg: 2, v: 2, n: 0, p: 0, gf: 5, gs: 2 },
+    { pos: 6, squadra: "Pietrapiana Giglio Verde", pg: 3, v: 1, n: 1, p: 1, gf: 6, gs: 1 },
+    { pos: 7, squadra: "AS Giglio", pg: 3, v: 0, n: 3, p: 0, gf: 2, gs: 2 },
+    { pos: 8, squadra: "Levanella '86", pg: 3, v: 0, n: 3, p: 0, gf: 2, gs: 2 },
+    { pos: 9, squadra: "Pol. Il Ponte", pg: 2, v: 0, n: 2, p: 0, gf: 3, gs: 3 },
+    { pos: 10, squadra: "Levane Leona", pg: 2, v: 1, n: 0, p: 1, gf: 2, gs: 3 },
+    { pos: 11, squadra: "Baco Donnini", pg: 3, v: 0, n: 2, p: 1, gf: 4, gs: 7 },
+    { pos: 12, squadra: "Malva", pg: 3, v: 0, n: 1, p: 2, gf: 3, gs: 8 },
+    { pos: 13, squadra: "Montanino", pg: 3, v: 0, n: 1, p: 2, gf: 5, gs: 11 },
+    { pos: 14, squadra: "Sereto GS", pg: 2, v: 0, n: 0, p: 2, gf: 1, gs: 9 },
   ],
   promozionePos: 0,     // fino a questa posizione (inclusa): zona promozione/playoff (0 = nessuna)
   retrocessionePos: 99, // da questa posizione (inclusa): zona retrocessione (99 = nessuna)
@@ -102,7 +102,6 @@ const SITE_DATA = {
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
     campionato: [
-      { giornata: "3ª Andata", data: "2026-10-23", ora: "21:00", periodo: "23-26 ottobre 2026", casa: "Ponte agli Stolli", ospite: "Pietrapiana Giglio Verde", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
       { giornata: "4ª Andata", data: null, ora: null, periodo: "30 ottobre - 2 novembre 2026", casa: "Sereto GS", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo GS Sereto - Sereto, Cavriglia" },
       { giornata: "5ª Andata", data: null, ora: null, periodo: "6-9 novembre 2026", casa: "Pol. Il Ponte", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo A.S.D. San Cipriano - San Cipriano, Cavriglia" },
       { giornata: "6ª Andata", data: "2026-11-13", ora: "21:00", periodo: "13-16 novembre 2026", casa: "Ponte agli Stolli", ospite: "Levane Leona", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
@@ -204,6 +203,18 @@ const SITE_DATA = {
         { giocatore: "Mirko Borgogni", numero: 99, gol: 1 },
         { giocatore: "Gabriele Taverna", numero: 8, gol: 2 },
       ],
+      pagelle: [],
+    },
+    {
+      id: "r6",
+      competizione: "Campionato",
+      giornata: "3ª Andata",
+      data: "2026-10-23",
+      casa: "Ponte agli Stolli",
+      ospite: "Pietrapiana Giglio Verde",
+      golCasa: 1,
+      golOspite: 0,
+      reti: [],
       pagelle: [],
     },
   ],
