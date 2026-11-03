@@ -102,7 +102,7 @@ const SITE_DATA = {
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
     campionato: [
-      { giornata: "5ª Andata", data: null, ora: null, periodo: "6-9 novembre 2026", casa: "Pol. Il Ponte", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo A.S.D. San Cipriano - San Cipriano, Cavriglia" },
+      { giornata: "5ª Andata", data: "2026-11-09", ora: "21:15", periodo: "6-9 novembre 2026", casa: "Pol. Il Ponte", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo A.S.D. San Cipriano - San Cipriano, Cavriglia" },
       { giornata: "6ª Andata", data: "2026-11-13", ora: "21:00", periodo: "13-16 novembre 2026", casa: "Ponte agli Stolli", ospite: "Levane Leona", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
       { giornata: "7ª Andata", data: null, ora: null, periodo: "20-23 novembre 2026", casa: "Montanino", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo Sussidiario di Reggello - Reggello" },
       { giornata: "8ª Andata", data: "2026-11-27", ora: "21:00", periodo: "27-30 novembre 2026", casa: "Ponte agli Stolli", ospite: "Baco Donnini", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
