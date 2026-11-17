@@ -420,10 +420,18 @@ function renderHomeWidgets() {
     ]
       .filter(m => isOwnTeam(m.casa) || isOwnTeam(m.ospite));
     const adesso = new Date();
-    const conData = tutte
-      .filter(m => m.data && new Date(`${m.data}T${m.ora || "23:59"}:00`) >= adesso)
-      .sort((a, b) => new Date(a.data) - new Date(b.data));
-    const next = conData[0] || tutte.find(m => !m.data);
+    // partite ancora da giocare: con data futura, oppure senza data (si ordinano in base al periodo indicato)
+    const MESI_FULL = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+    const inizioPeriodo = periodo => {
+      const mt = /^(\d+)(?:\s+([a-zà]+))?\s*-\s*\d+\s+([a-zà]+)\s+(\d{4})/.exec(periodo || "");
+      if (!mt) return Infinity;
+      const mese = MESI_FULL.indexOf(mt[2] || mt[3]);
+      return mese < 0 ? Infinity : new Date(Number(mt[4]), mese, Number(mt[1])).getTime();
+    };
+    const chiave = m => m.data ? new Date(`${m.data}T00:00:00`).getTime() : inizioPeriodo(m.periodo);
+    const next = tutte
+      .filter(m => !m.data || new Date(`${m.data}T${m.ora || "23:59"}:00`) >= adesso)
+      .sort((a, b) => chiave(a) - chiave(b))[0];
     prossima.innerHTML = next ? `
       <div class="match-row" style="margin-bottom:0;"${next.data ? ` data-kickoff="${next.data}T${next.ora || "00:00"}:00"` : ""}>
         <div class="teams">

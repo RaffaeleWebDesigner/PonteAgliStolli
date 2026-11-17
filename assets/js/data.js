@@ -103,7 +103,7 @@ const SITE_DATA = {
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
     campionato: [
-      { giornata: "7ª Andata", data: null, ora: null, periodo: "20-23 novembre 2026", casa: "Montanino", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo Sussidiario di Reggello - Reggello" },
+      { giornata: "7ª Andata", data: "2026-11-20", ora: "21:00", periodo: "20-23 novembre 2026", casa: "Montanino", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo Sussidiario di Reggello - Reggello" },
       { giornata: "8ª Andata", data: "2026-11-27", ora: "21:00", periodo: "27-30 novembre 2026", casa: "Ponte agli Stolli", ospite: "Baco Donnini", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
       { giornata: "9ª Andata", data: null, ora: null, periodo: "4-7 dicembre 2026", casa: "ASD Vacchereccia", ospite: "Ponte agli Stolli", luogo: "Stadio Arci Vacchereccia Marino Zatini - Cavriglia" },
       { giornata: "10ª Andata", data: "2026-12-11", ora: "21:00", periodo: "11-14 dicembre 2026", casa: "Ponte agli Stolli", ospite: "AS Giglio", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
