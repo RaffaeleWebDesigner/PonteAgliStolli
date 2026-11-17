@@ -54,20 +54,20 @@ const SITE_DATA = {
 
   // ---------------- CLASSIFICA ----------------
   classifica: [
-    { pos: 1, squadra: "San Cipriano", pg: 4, v: 2, n: 2, p: 0, gf: 12, gs: 6 },
-    { pos: 2, squadra: "Ponte agli Stolli", pg: 4, v: 3, n: 0, p: 1, gf: 9, gs: 3 },
-    { pos: 3, squadra: "ASD Gaiole", pg: 4, v: 2, n: 2, p: 0, gf: 8, gs: 3 },
-    { pos: 4, squadra: "Levane Leona", pg: 4, v: 3, n: 0, p: 1, gf: 9, gs: 5 },
-    { pos: 5, squadra: "ASD Vacchereccia", pg: 4, v: 2, n: 2, p: 0, gf: 8, gs: 4 },
-    { pos: 6, squadra: "Ginestra", pg: 4, v: 3, n: 0, p: 1, gf: 8, gs: 4 },
-    { pos: 7, squadra: "Levanella '86", pg: 4, v: 1, n: 3, p: 0, gf: 5, gs: 2 },
-    { pos: 8, squadra: "Pietrapiana Giglio Verde", pg: 4, v: 1, n: 1, p: 2, gf: 7, gs: 3 },
-    { pos: 9, squadra: "AS Giglio", pg: 4, v: 0, n: 3, p: 1, gf: 2, gs: 4 },
-    { pos: 10, squadra: "Baco Donnini", pg: 4, v: 0, n: 3, p: 1, gf: 6, gs: 9 },
-    { pos: 11, squadra: "Pol. Il Ponte", pg: 4, v: 0, n: 3, p: 1, gf: 5, gs: 8 },
-    { pos: 12, squadra: "Malva", pg: 4, v: 0, n: 2, p: 2, gf: 5, gs: 10 },
-    { pos: 13, squadra: "Montanino", pg: 4, v: 0, n: 1, p: 3, gf: 5, gs: 14 },
-    { pos: 14, squadra: "Sereto GS", pg: 4, v: 0, n: 0, p: 4, gf: 3, gs: 17 },
+    { pos: 1, squadra: "Ponte agli Stolli", pg: 6, v: 5, n: 0, p: 1, gf: 15, gs: 4 },
+    { pos: 2, squadra: "San Cipriano", pg: 6, v: 4, n: 2, p: 0, gf: 17, gs: 8 },
+    { pos: 3, squadra: "ASD Gaiole", pg: 6, v: 4, n: 2, p: 0, gf: 13, gs: 4 },
+    { pos: 4, squadra: "Ginestra", pg: 6, v: 4, n: 1, p: 1, gf: 9, gs: 4 },
+    { pos: 5, squadra: "Levane Leona", pg: 6, v: 4, n: 0, p: 2, gf: 11, gs: 8 },
+    { pos: 6, squadra: "ASD Vacchereccia", pg: 6, v: 3, n: 2, p: 1, gf: 10, gs: 7 },
+    { pos: 7, squadra: "Baco Donnini", pg: 6, v: 1, n: 4, p: 1, gf: 10, gs: 10 },
+    { pos: 8, squadra: "Levanella '86", pg: 6, v: 1, n: 3, p: 2, gf: 8, gs: 7 },
+    { pos: 9, squadra: "AS Giglio", pg: 6, v: 1, n: 3, p: 2, gf: 7, gs: 6 },
+    { pos: 10, squadra: "Malva", pg: 6, v: 1, n: 2, p: 3, gf: 8, gs: 16 },
+    { pos: 11, squadra: "Pietrapiana Giglio Verde", pg: 6, v: 1, n: 1, p: 4, gf: 7, gs: 6 },
+    { pos: 12, squadra: "Pol. Il Ponte", pg: 6, v: 0, n: 3, p: 3, gf: 7, gs: 14 },
+    { pos: 13, squadra: "Sereto GS", pg: 6, v: 1, n: 0, p: 5, gf: 7, gs: 22 },
+    { pos: 14, squadra: "Montanino", pg: 6, v: 0, n: 1, p: 5, gf: 7, gs: 20 },
   ],
   promozionePos: 0,     // fino a questa posizione (inclusa): zona promozione/playoff (0 = nessuna)
   retrocessionePos: 99, // da questa posizione (inclusa): zona retrocessione (99 = nessuna)
@@ -76,14 +76,14 @@ const SITE_DATA = {
   // Conta solo i gol di Campionato e Coppa: le amichevoli NON entrano in questa classifica.
   marcatori: [
     { numero: 1,  giocatore: "Filippo Riminesi",    squadra: "Ponte agli Stolli", gol: 0 },
-    { numero: 3,  giocatore: "Elia Gabbrielli",     squadra: "Ponte agli Stolli", gol: 0 },
+    { numero: 3,  giocatore: "Elia Gabbrielli",     squadra: "Ponte agli Stolli", gol: 1 },
     { numero: 4,  giocatore: "Andrea Mingaj",       squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 5,  giocatore: "Raffaele Ciccarelli", squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 6,  giocatore: "Jaouhar Nakoua",      squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 7,  giocatore: "Tommaso Brandi",      squadra: "Ponte agli Stolli", gol: 0 },
-    { numero: 8,  giocatore: "Gabriele Taverna",    squadra: "Ponte agli Stolli", gol: 2 },
+    { numero: 8,  giocatore: "Gabriele Taverna",    squadra: "Ponte agli Stolli", gol: 3 },
     { numero: 9,  giocatore: "Raffaele Ciccarelli", squadra: "Ponte agli Stolli", gol: 1 },
-    { numero: 10, giocatore: "Amin Nider",          squadra: "Ponte agli Stolli", gol: 2 },
+    { numero: 10, giocatore: "Amin Nider",          squadra: "Ponte agli Stolli", gol: 3 },
     { numero: 11, giocatore: "Jam", squadra: "Ponte agli Stolli", gol: 1 },
     { numero: 13, giocatore: "Luca Bonchi",         squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 14, giocatore: "Tommaso Marini",      squadra: "Ponte agli Stolli", gol: 0 },
@@ -91,10 +91,10 @@ const SITE_DATA = {
     { numero: 17, giocatore: "Anton Pjetri",        squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 21, giocatore: "Mattia Ortichi",      squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 22, giocatore: "Samuele Tognetti",    squadra: "Ponte agli Stolli", gol: 0 },
-    { numero: 30, giocatore: "Emanuele Imperatore", squadra: "Ponte agli Stolli", gol: 0 },
+    { numero: 30, giocatore: "Emanuele Imperatore", squadra: "Ponte agli Stolli", gol: 2 },
     { numero: 34, giocatore: "Mattia Tapinassi",    squadra: "Ponte agli Stolli", gol: 0 },
     { numero: 77, giocatore: "Niccolò Consolati",   squadra: "Ponte agli Stolli", gol: 0 },
-    { numero: 99, giocatore: "Mirko Borgogni",       squadra: "Ponte agli Stolli", gol: 3 },
+    { numero: 99, giocatore: "Mirko Borgogni",       squadra: "Ponte agli Stolli", gol: 4 },
   ],
 
 
@@ -102,8 +102,6 @@ const SITE_DATA = {
   // ---------------- CALENDARIO (partite da giocare) ----------------
   calendario: {
     campionato: [
-      { giornata: "5ª Andata", data: "2026-11-09", ora: "21:15", periodo: "6-9 novembre 2026", casa: "Pol. Il Ponte", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo A.S.D. San Cipriano - San Cipriano, Cavriglia" },
-      { giornata: "6ª Andata", data: "2026-11-13", ora: "21:00", periodo: "13-16 novembre 2026", casa: "Ponte agli Stolli", ospite: "Levane Leona", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
       { giornata: "7ª Andata", data: null, ora: null, periodo: "20-23 novembre 2026", casa: "Montanino", ospite: "Ponte agli Stolli", luogo: "Campo Sportivo Sussidiario di Reggello - Reggello" },
       { giornata: "8ª Andata", data: "2026-11-27", ora: "21:00", periodo: "27-30 novembre 2026", casa: "Ponte agli Stolli", ospite: "Baco Donnini", luogo: "Campo Sportivo il Madonnino - Figline Valdarno" },
       { giornata: "9ª Andata", data: null, ora: null, periodo: "4-7 dicembre 2026", casa: "ASD Vacchereccia", ospite: "Ponte agli Stolli", luogo: "Stadio Arci Vacchereccia Marino Zatini - Cavriglia" },
@@ -234,20 +232,52 @@ const SITE_DATA = {
       ],
       pagelle: [],
     },
+    {
+      id: "r8",
+      competizione: "Campionato",
+      giornata: "5ª Andata",
+      data: "2026-11-09",
+      casa: "Pol. Il Ponte",
+      ospite: "Ponte agli Stolli",
+      golCasa: 1,
+      golOspite: 3,
+      reti: [
+        { giocatore: "Emanuele Imperatore", numero: 30, gol: 1 },
+        { giocatore: "Mirko Borgogni", numero: 99, gol: 1 },
+        { giocatore: "Gabriele Taverna", numero: 8, gol: 1 },
+      ],
+      pagelle: [],
+    },
+    {
+      id: "r9",
+      competizione: "Campionato",
+      giornata: "6ª Andata",
+      data: "2026-11-13",
+      casa: "Ponte agli Stolli",
+      ospite: "Levane Leona",
+      golCasa: 3,
+      golOspite: 0,
+      reti: [
+        { giocatore: "Emanuele Imperatore", numero: 30, gol: 1 },
+        { giocatore: "Amin Nider", numero: 10, gol: 1 },
+        { giocatore: "Elia Gabbrielli", numero: 3, gol: 1 },
+      ],
+      pagelle: [],
+    },
   ],
 
   // ---------------- ROSA GIOCATORI ----------------
   // presenze e gol: contano solo Campionato e Coppa (come la classifica marcatori), le amichevoli no.
   giocatori: [
     { numero: 1,  nome: "Filippo Riminesi",    ruolo: "Difensore",      nascita: null, presenze: 4, gol: 0 },
-    { numero: 3,  nome: "Elia Gabbrielli",     ruolo: "Centrocampista", nascita: null, presenze: 3, gol: 0 },
+    { numero: 3,  nome: "Elia Gabbrielli",     ruolo: "Centrocampista", nascita: null, presenze: 4, gol: 1 },
     { numero: 4,  nome: "Andrea Mingaj",       ruolo: "Difensore",      nascita: null, presenze: 1, gol: 0 },
     { numero: 5,  nome: "Raffaele Ciccarelli", ruolo: "Difensore",      nascita: null, presenze: 4, gol: 0 },
     { numero: 6,  nome: "Jaouhar Nakoua",      ruolo: "Attaccante",     nascita: null, presenze: 0, gol: 0 },
     { numero: 7,  nome: "Tommaso Brandi",      ruolo: "Attaccante",     nascita: null, presenze: 3, gol: 0 },
-    { numero: 8,  nome: "Gabriele Taverna",    ruolo: "Centrocampista", nascita: null, presenze: 4, gol: 2 },
+    { numero: 8,  nome: "Gabriele Taverna",    ruolo: "Centrocampista", nascita: null, presenze: 5, gol: 3 },
     { numero: 9,  nome: "Raffaele Ciccarelli", ruolo: "Attaccante",     nascita: null, presenze: 4, gol: 1 },
-    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 4, gol: 2 },
+    { numero: 10, nome: "Amin Nider",          ruolo: "Attaccante",     nascita: null, presenze: 5, gol: 3 },
     { numero: 11, nome: "Jam", ruolo: "Attaccante", nascita: null, presenze: 2, gol: 1 },
     { numero: 13, nome: "Luca Bonchi",         ruolo: "Centrocampista", nascita: null, presenze: 2, gol: 0 },
     { numero: 14, nome: "Tommaso Marini",      ruolo: "Difensore",      nascita: null, presenze: 4, gol: 0 },
@@ -255,10 +285,10 @@ const SITE_DATA = {
     { numero: 17, nome: "Anton Pjetri",        ruolo: "Centrocampista", nascita: null, presenze: 2, gol: 0 },
     { numero: 21, nome: "Mattia Ortichi",      ruolo: "Centrocampista", nascita: null, presenze: 0, gol: 0 },
     { numero: 22, nome: "Samuele Tognetti",    ruolo: "Portiere",       nascita: null, presenze: 4, gol: 0 },
-    { numero: 30, nome: "Emanuele Imperatore", ruolo: "Centrocampista", nascita: null, presenze: 4, gol: 0 },
+    { numero: 30, nome: "Emanuele Imperatore", ruolo: "Centrocampista", nascita: null, presenze: 6, gol: 2 },
     { numero: 34, nome: "Mattia Tapinassi",    ruolo: "Difensore",      nascita: null, presenze: 4, gol: 0 },
     { numero: 77, nome: "Niccolò Consolati",   ruolo: "Difensore",      nascita: null, presenze: 2, gol: 0 },
-    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 4, gol: 3 },
+    { numero: 99, nome: "Mirko Borgogni",       ruolo: "Centrocampista", nascita: null, presenze: 5, gol: 4 },
   ],
 
   // ---------------- STAFF ----------------
